@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru-RU" xml:lang="ru-RU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Герра Гарсия Паола Валентина" />
+  <title>Лабораторная работа №12</title>
+  <style>
+    html {
+      font-family: PT Serif;
+      font-size: 12pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: PT Mono;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  
+  
+  
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Лабораторная работа №12</h1>
+<p class="subtitle">Пример моделирования простого протокола передачи
+данных</p>
+<p class="author">Герра Гарсия Паола Валентина</p>
+</header>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Содержание</h2>
+
+</nav>
+<h1 id="введение">Введение</h1>
+<h2 id="цели-и-задачи">Цели и задачи</h2>
+<p><strong>Цель работы</strong></p>
+<p>Реализовать простой протокол передачи данных в CPN Tools.</p>
+<p><strong>Задание</strong></p>
+<ul>
+<li>Реализовать простой протокол передачи данных в CPN Tools.</li>
+<li>Вычислить пространство состояний, сформировать отчет о нем и
+построить граф.</li>
+</ul>
+<h1 id="выполнение-лабораторной-работы">Выполнение лабораторной
+работы</h1>
+<p>Основные состояния: источник (Send), получатель (Receiver). Действия
+(переходы): отправить пакет (Send Packet), отправить подтверждение (Send
+ACK). Промежуточное состояние: следующий посылаемый пакет (NextSend).
+Зададим декларации модели (рис. <span class="citation"
+data-cites="fig:001">[-@fig:001]</span>).</p>
+<figure id="fig:001">
+<img src="image/1.png" style="width:70.0%" alt="Задание деклараций" />
+<figcaption aria-hidden="true">Задание деклараций</figcaption>
+</figure>
+<p>Состояние Send имеет тип INTxDATA и следующую начальную маркировку (в
+соответствии с передаваемой фразой).</p>
+<p>Стоповый байт (“########”) определяет, что сообщение закончилось.
+Состояние Receiver имеет тип DATA и начальное значение 1’“” (т.е. пустая
+строка, поскольку состояние собирает данные и номер пакета его не
+интересует). Состояние NextSend имеет тип INT и начальное значение 1’1.
+Поскольку пакеты представляют собой кортеж, состоящий из номера пакета и
+строки, то выражение у двусторонней дуги будет иметь значение (n,p).
+Кроме того, необходимо взаимодействовать с состоянием, которое будет
+сообщать номер следующего посылаемого пакета данных. Поэтому переход
+Send Packet соединяем с состоянием NextSend двумя дугами с выражениями n
+(рис. 12.1). Также необходимо получать информацию с подтверждениями о
+получении данных. От перехода Send Packet к состоянию NextSend дуга с
+выражением n, обратно – k.</p>
+<p>Построим начальный граф(рис. <span class="citation"
+data-cites="fig:002">[-@fig:002]</span>):</p>
+<figure id="fig:002">
+<img src="image/2.png" style="width:70.0%" alt="Начальный граф" />
+<figcaption aria-hidden="true">Начальный граф</figcaption>
+</figure>
+<p>Зададим промежуточные состояния (A, B с типом INTxDATA, C, D с типом
+INTxDATA) для переходов (рис. 12.2): передать пакет Transmit Packet
+(передаём (n,p)), передать подтверждение Transmit ACK (передаём целое
+число k). Добавляем переход получения пакета (Receive Packet). От
+состояния Receiver идёт дуга к переходу Receive Packet со значением той
+строки (str), которая находится в состоянии Receiver. Обратно:
+проверяем, что номер пакета новый и строка не равна стоп-биту. Если это
+так, то строку добавляем к полученным данным. Кроме того, необходимо
+знать, каким будет номер следующего пакета. Для этого добавляем
+состояние NextRec с типом INT и начальным значением 1’1 (один пакет),
+связываем его дугами с переходом Receive Packet. Причём к переходу идёт
+дуга с выражением k, от перехода — if n=k then k+1 else k. Связываем
+состояния B и C с переходом Receive Packet. От состояния B к переходу
+Receive Packet — выражение (n,p), от перехода Receive Packet к состоянию
+C — выражение if n=k then k+1 else k. От перехода Receive Packet к
+состоянию Receiver: if n=k andalso p&lt;&gt;stop then str^p else str.
+(если n=k и мы не получили стоп-байт, то направляем в состояние строку и
+к ней прикрепляем p, в противном случае посылаем только строку). На
+переходах Transmit Packet и Transmit ACK зададим потерю пакетов. Для
+этого на интервале от 0 до 10 зададим пороговое значение и, если
+передаваемое значение превысит этот порог, то считаем, что произошла
+потеря пакета, если нет, то передаём пакет дальше. Для этого задаём
+вспомогательные состояния SP и SA с типом Ten0 и начальным значением
+1`8, соединяем с соответствующими переходами(рис. <span class="citation"
+data-cites="fig:003">[-@fig:003]</span>):</p>
+<figure id="fig:003">
+<img src="image/3.png" style="width:70.0%"
+alt="Добавление промежуточных состояний" />
+<figcaption aria-hidden="true">Добавление промежуточных
+состояний</figcaption>
+</figure>
+<p>В декларациях задаём(рис. <span class="citation"
+data-cites="fig:004">[-@fig:004]</span>):</p>
+<figure id="fig:004">
+<img src="image/4.png" style="width:70.0%" alt="Задание деклараций" />
+<figcaption aria-hidden="true">Задание деклараций</figcaption>
+</figure>
+<p>Таким образом, получим модель простого протокола передачи данных
+(рис. 12.3). Пакет последовательно проходит: состояние Send, переход
+Send Packet, состояние A, с некоторой вероятностью переход Transmit
+Packet, состояние B, попадает на переход Receive Packet, где проверяется
+номер пакета и если нет совпадения, то пакет направляется в состояние
+Received, а номер пакета передаётся последовательно в состояние C, с
+некоторой вероятностью в переход Transmit ACK, далее в состояние D,
+переход Receive ACK, состояние NextSend (увеличивая на 1 номер
+следующего пакета), переход Send Packet. Так продолжается до тех пор,
+пока не будут переданы все части сообщения. Последней будет передана
+стоп-последовательность(рис. <span class="citation"
+data-cites="fig:005">[-@fig:005]</span>):</p>
+<figure id="fig:005">
+<img src="image/5.png" style="width:70.0%"
+alt="Модель простого протокола передачи данных" />
+<figcaption aria-hidden="true">Модель простого протокола передачи
+данных</figcaption>
+</figure>
+<figure id="fig:006">
+<img src="image/6.png" style="width:70.0%"
+alt="Запуск модели простого протокола передачи данных" />
+<figcaption aria-hidden="true">Запуск модели простого протокола передачи
+данных</figcaption>
+</figure>
+<h2 id="упражнение">Упражнение</h2>
+<p>Вычислим пространство состояний. Прежде, чем пространство состояний
+может быть вычислено и проанализировано, необходимо сформировать код
+пространства состояний. Этот код создается, когда используется
+инструмент Войти в пространство состояний. Вход в пространство состояний
+занимает некоторое время. Затем, если ожидается, что пространство
+состояний будет небольшим, можно просто применить инструмент Вычислить
+пространство состояний к листу, содержащему страницу сети. Сформируем
+отчёт о пространстве состояний и проанализируем его. Чтобы сохранить
+отчет, необходимо применить инструмент Сохранить отчет о пространстве
+состояний к листу, содержащему страницу сети и ввести имя файла
+отчета.</p>
+<p>Из него можно увидеть:</p>
+<ul>
+<li>13341 состояний и 206461 переходов между ними.</li>
+<li>Указаны границы значений для каждого элемента: промежуточные
+состояния A, B, C(наибольшая верхняя граница у A, так как после него
+пакеты отбрасываются. Так как мы установили максимум 10, то у следующего
+состояния B верхняя граница – 10), вспомогательные состояния SP, SA,
+NextRec, NextSend, Receiver(в них может находиться только один пакет) и
+состояние Send(в нем хранится только 8 элементов, так как мы задали их в
+начале и с ними никаких изменений не происходит).</li>
+<li>Указаны границы в виде мультимножеств.</li>
+<li>Маркировка home для всех состояний (в любую позицию можно попасть из
+любой другой маркировки).</li>
+<li>Маркировка dead равная 4675 [9999,9998,9997,9996,9995,…] – это
+состояния, в которых нет включенных переходов.</li>
+</ul>
+<pre><code>CPN Tools state space report for:
+/home/openmodelica/protocol.cpn
+Report generated: Sat May 25 21:02:31 2024
+
+
+ Statistics
+------------------------------------------------------------------------
+
+  State Space
+     Nodes:  13341
+     Arcs:   206461
+     Secs:   300
+     Status: Partial
+
+  Scc Graph
+     Nodes:  6975
+     Arcs:   170859
+     Secs:   14
+
+
+ Boundedness Properties
+------------------------------------------------------------------------
+
+  Best Integer Bounds
+                             Upper      Lower
+     Main&#39;A 1                20         0
+     Main&#39;B 1                10         0
+     Main&#39;C 1                6          0
+     Main&#39;D 1                5          0
+     Main&#39;NextRec 1          1          1
+     Main&#39;NextSend 1         1          1
+     Main&#39;Reciever 1         1          1
+     Main&#39;SA 1               1          1
+     Main&#39;SP 1               1          1
+     Main&#39;Send 1             8          8
+
+  Best Upper Multi-set Bounds
+     Main&#39;A 1            20`(1,&quot;Modellin&quot;)++
+15`(2,&quot;g and An&quot;)++
+9`(3,&quot;alysis b&quot;)++
+4`(4,&quot;y Means &quot;)
+     Main&#39;B 1            10`(1,&quot;Modellin&quot;)++
+7`(2,&quot;g and An&quot;)++
+4`(3,&quot;alysis b&quot;)++
+2`(4,&quot;y Means &quot;)
+     Main&#39;C 1            6`2++
+5`3++
+3`4++
+1`5
+     Main&#39;D 1            5`2++
+3`3++
+2`4++
+1`5
+     Main&#39;NextRec 1      1`1++
+1`2++
+1`3++
+1`4++
+1`5
+     Main&#39;NextSend 1     1`1++
+1`2++
+1`3++
+1`4
+     Main&#39;Reciever 1     1`&quot;&quot;++
+1`&quot;Modellin&quot;++
+1`&quot;Modelling and An&quot;++
+1`&quot;Modelling and Analysis b&quot;++
+1`&quot;Modelling and Analysis by Means &quot;
+     Main&#39;SA 1           1`8
+     Main&#39;SP 1           1`8
+     Main&#39;Send 1         1`(1,&quot;Modellin&quot;)++
+1`(2,&quot;g and An&quot;)++
+1`(3,&quot;alysis b&quot;)++
+1`(4,&quot;y Means &quot;)++
+1`(5,&quot;of Colou&quot;)++
+1`(6,&quot;red Petr&quot;)++
+1`(7,&quot;y Nets##&quot;)++
+1`(8,&quot;########&quot;)
+
+  Best Lower Multi-set Bounds
+     Main&#39;A 1            empty
+     Main&#39;B 1            empty
+     Main&#39;C 1            empty
+     Main&#39;D 1            empty
+     Main&#39;NextRec 1      empty
+     Main&#39;NextSend 1     empty
+     Main&#39;Reciever 1     empty
+     Main&#39;SA 1           1`8
+     Main&#39;SP 1           1`8
+     Main&#39;Send 1         1`(1,&quot;Modellin&quot;)++
+1`(2,&quot;g and An&quot;)++
+1`(3,&quot;alysis b&quot;)++
+1`(4,&quot;y Means &quot;)++
+1`(5,&quot;of Colou&quot;)++
+1`(6,&quot;red Petr&quot;)++
+1`(7,&quot;y Nets##&quot;)++
+1`(8,&quot;########&quot;)
+
+
+ Home Properties
+------------------------------------------------------------------------
+
+  Home Markings
+     None
+
+
+ Liveness Properties
+------------------------------------------------------------------------
+
+  Dead Markings
+     4675 [9999,9998,9997,9996,9995,...]
+
+  Dead Transition Instances
+     None
+
+  Live Transition Instances
+     None
+
+
+ Fairness Properties
+------------------------------------------------------------------------
+       Main&#39;Recieved_Packet 1 No Fairness
+       Main&#39;Send_ACK 1        No Fairness
+       Main&#39;Send_Packet 1     Impartial
+       Main&#39;Transmit_ACK 1    No Fairness
+       Main&#39;Transmit_Packet 1 Impartial</code></pre>
+<p>Сформируем начало графа пространства состояний, так как их много(рис.
+<span class="citation" data-cites="fig:007">[-@fig:007]</span>):</p>
+<figure id="fig:007">
+<img src="image/7.png" style="width:70.0%"
+alt="Пространство состояний для модели простого протокола передачи данных" />
+<figcaption aria-hidden="true">Пространство состояний для модели
+простого протокола передачи данных</figcaption>
+</figure>
+<h1 id="выводы">Выводы</h1>
+<p>В процессе выполнения данной лабораторной работы я реализовала
+простой протокол передачи данных в CPN Tools и проведен анализ его
+пространства состояний.</p>
+</body>
+</html>
